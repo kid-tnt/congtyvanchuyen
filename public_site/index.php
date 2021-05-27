@@ -26,12 +26,8 @@
       <a  href="#dichvu"><i class="fa fa-fw fa-globe"></i> Dịch vụ</a>
       <a  href="#lienhe"><i class="fa fa-fw fa-envelope"></i> Liên hệ</a>
       <a  href="#gioithieu"><i class="fa fa-fw fa-info-circle"></i> Giới thiệu</a>
-      <a href="javascript:void(0);" onclick="getModal2()">
-        <i class="fa fa-fw fa-edit"></i> Đăng kí
-      </a>
-      <a href="javascript:void(0);" onclick="getModal1()">
-        <i class="fa fa-fw fa-user-circle"></i> Đăng nhập
-      </a>
+      <a  href="#"> <i class="fa fa-fw fa-edit"></i> Đăng kí</a>
+      <a  href="login.php" target="_blank"><i class="fa fa-fw fa-user-circle"></i> Đăng nhập</a>
       <a href="javascript:void(0);" class="icon" onclick="menuFunction()">
           <i class="fa fa-bars"></i>
         </a>

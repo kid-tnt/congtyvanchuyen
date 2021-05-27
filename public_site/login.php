@@ -1,11 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION['loggedin'])){
-        header("location:../../public_site/login.php");
-    }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,17 +11,27 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="stylectvc_1.css">
-    <title>Trang quan tri</title>
+    <title>Login</title>
 </head>
 <body>
 <div class="jumbotron text-center" id="header" >
       <h1>Công ty vận chuyển</h1>
       <p>Uy tín tạo niềm tin</p> 
     </div>
-    <h1> Chào mừng đến với trang quản trị </h1>
-    <a href="../action/ac_logout.php"> Đăng xuất 
-    </a>
-  
+   
+    <div class="container">
+    <form action="../admin/action/ac_login.php" method="POST" style="display: flex; justify-content: space-around;">
+              <div class="container-login">
+                  <label for="uname"><b>Tên đăng nhập/Email</b></label>
+                  <input type="text" placeholder="Nhập tên đăng nhập" name="uname" required>
+                  <label for="psw"><b>Mật khẩu</b></label>
+                  <input type="password" placeholder="Nhập mật khẩu" name="psw" required>
+                  <button type="submit" name="submitLoging">Đăng nhập</button>
+                  <span class="psw">Quên <a href="#">mật khẩu</a></span>
+              </div>
+</form>
+    </div>
+
     
 <footer class="container">
     <div class="row-footer">
