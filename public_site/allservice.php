@@ -1,7 +1,3 @@
-<?php
-    session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="stylectvc_1.css">
-    <title>Đăng nhập</title>
+    <title>Tất cả dịch vụ</title>
 </head>
 <body>
 <div class="jumbotron text-center" id="header" >
@@ -22,17 +18,8 @@
    
     <div class="container">
     <a  href="index.php" style="color: #118fe2;font-size: 20px;"><i class="fa fa-fw fa-home"></i> Trang chủ</a>
-    <h1 style="text-align: center;">Đăng nhập</h1>
-    <form action="../admin/action/ac_login.php" method="POST" style="display: flex; justify-content: space-around;">
-              <div class="container-login">
-                  <label for="uname"><b>Tên đăng nhập/Email</b></label>
-                  <input type="text" placeholder="Nhập tên đăng nhập" name="uname" required>
-                  <label for="psw"><b>Mật khẩu</b></label>
-                  <input type="password" placeholder="Nhập mật khẩu" name="psw" required>
-                  <button type="submit" name="submitLoging">Đăng nhập</button>
-                  <span class="psw">Quên <a href="#">mật khẩu</a></span>
-              </div>
-</form>
+    <h1>Tất cả dịch vụ sẽ được hiển thị ở đây</h1>
+   
 
     </div>
 

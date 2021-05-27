@@ -104,7 +104,10 @@
     justify-content: space-between;
   }
   .btn-danger{
-  background-color:#00ffcbd4;
+  background-color:#1a92bc;;
+  }
+  .btn-danger:hover{
+    background-color:#00ffcbd4;
   }
   .add-in4{
     color:whitesmoke;
