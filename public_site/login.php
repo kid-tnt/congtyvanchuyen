@@ -1,17 +1,6 @@
-<?php require '../../database/database.php'; db_connect();  
-require '../../database/session.php'; session_start();			
+<?php require '../database/database.php'; db_connect();  
+require '../database/session.php'; session_start();			
 ?>
-<?php
-
-    //session_start();
-   /* if(!isset($_SESSION['loggedin'])){
-        header("location:../../public_site/login.php");
-    }
-    */
-?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,24 +11,37 @@ require '../../database/session.php'; session_start();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="stylectvc_1.css">
-    <title>Trang quan tri</title>
+    <title>Đăng nhập</title>
 </head>
 <body>
 <div class="jumbotron text-center" id="header" >
       <h1>Công ty vận chuyển</h1>
       <p>Uy tín tạo niềm tin</p> 
     </div>
-    <?php 
-   
-    if(!empty(session_get('dangNhapThanhCong'))){
-        echo session_get('dangNhapThanhCong');
-    }
-    ?>
-    <h1> Chào mừng đến với trang quản trị </h1>
-    <a href="../action/ac_logout.php"> Đăng xuất 
-    </a>
-  
     
+   
+    <div class="container">
+    <a  href="index.php" style="color: #118fe2;font-size: 20px;"><i class="fa fa-fw fa-home"></i> Trang chủ</a>
+    <h1 style="text-align: center;">Đăng nhập</h1>
+   
+    <form action="../admin/action/ac_login.php" method="POST" style="display: flex; justify-content: space-around;">
+              <div class="container-login">
+                  <label for="email"><b>Email</b></label>
+                  <input type="text" placeholder="Nhập tên đăng nhập" name="email" required>
+                  <label for="password"><b>Mật khẩu</b></label>
+                  <input type="password" placeholder="Nhập mật khẩu" name="password" required>
+                  <button type="submit" name="submitLoging">Đăng nhập</button>
+                  <span class="psw">Quên <a href="#">mật khẩu</a></span>
+              </div>
+</form>
+
+    </div>
+
+    <?php
+    if(!empty(session_get('dangNhapThatBai'))){
+        echo session_get('dangNhapThatBai'); session_delete('dangNhapThatBai');
+    }
+     ?>
 <footer class="container">
     <div class="row-footer">
         <div class="pull-left">

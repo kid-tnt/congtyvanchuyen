@@ -11,7 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
-  <title>congtyvanchuyen.com</title>
+  <title>congtyvanchuyen.com-Uy tín tạo niềm tin</title>
 </head>
 <body  id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
     <!-- header-->
@@ -26,12 +26,8 @@
       <a  href="#dichvu"><i class="fa fa-fw fa-globe"></i> Dịch vụ</a>
       <a  href="#lienhe"><i class="fa fa-fw fa-envelope"></i> Liên hệ</a>
       <a  href="#gioithieu"><i class="fa fa-fw fa-info-circle"></i> Giới thiệu</a>
-      <a href="javascript:void(0);" onclick="getModal2()">
-        <i class="fa fa-fw fa-edit"></i> Đăng kí
-      </a>
-      <a href="javascript:void(0);" onclick="getModal1()">
-        <i class="fa fa-fw fa-user-circle"></i> Đăng nhập
-      </a>
+      <a  href="signup.php" target="_blank"> <i class="fa fa-fw fa-edit"></i> Đăng kí</a>
+      <a  href="login.php" target="_blank"><i class="fa fa-fw fa-user-circle"></i> Đăng nhập</a>
       <a href="javascript:void(0);" class="icon" onclick="menuFunction()">
           <i class="fa fa-bars"></i>
         </a>
@@ -243,7 +239,7 @@
                 </div>
 
                 <div class="wrap-button">
-                  <a href="#" class="btn btn-info" role="button">Tất cả dịch vụ</a>
+                  <a href="allservice.php" class="btn btn-info" role="button">Tất cả dịch vụ</a>
                 </div> 
           </div>
         </div>

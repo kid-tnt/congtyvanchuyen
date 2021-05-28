@@ -1,18 +1,3 @@
-<?php require '../../database/database.php'; db_connect();  
-require '../../database/session.php'; session_start();			
-?>
-<?php
-
-    //session_start();
-   /* if(!isset($_SESSION['loggedin'])){
-        header("location:../../public_site/login.php");
-    }
-    */
-?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,23 +7,22 @@ require '../../database/session.php'; session_start();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="stylectvc_1.css">
-    <title>Trang quan tri</title>
+    <title>Tất cả dịch vụ</title>
 </head>
 <body>
 <div class="jumbotron text-center" id="header" >
       <h1>Công ty vận chuyển</h1>
       <p>Uy tín tạo niềm tin</p> 
     </div>
-    <?php 
+    
    
-    if(!empty(session_get('dangNhapThanhCong'))){
-        echo session_get('dangNhapThanhCong');
-    }
-    ?>
-    <h1> Chào mừng đến với trang quản trị </h1>
-    <a href="../action/ac_logout.php"> Đăng xuất 
-    </a>
-  
+    <div class="container">
+    <a  href="index.php" style="color: #118fe2;font-size: 20px;"><i class="fa fa-fw fa-home"></i> Trang chủ</a>
+    <h1>Tất cả dịch vụ sẽ được hiển thị ở đây</h1>
+   
+
+    </div>
+
     
 <footer class="container">
     <div class="row-footer">
