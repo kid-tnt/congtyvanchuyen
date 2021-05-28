@@ -1,5 +1,5 @@
-<?php
-    session_start();
+<?php require '../database/database.php'; db_connect();  
+require '../database/session.php'; session_start();			
 ?>
 
 <!DOCTYPE html>
@@ -23,12 +23,13 @@
     <div class="container">
     <a  href="index.php" style="color: #118fe2;font-size: 20px;"><i class="fa fa-fw fa-home"></i> Trang chủ</a>
     <h1 style="text-align: center;">Đăng nhập</h1>
+   
     <form action="../admin/action/ac_login.php" method="POST" style="display: flex; justify-content: space-around;">
               <div class="container-login">
-                  <label for="uname"><b>Tên đăng nhập/Email</b></label>
-                  <input type="text" placeholder="Nhập tên đăng nhập" name="uname" required>
-                  <label for="psw"><b>Mật khẩu</b></label>
-                  <input type="password" placeholder="Nhập mật khẩu" name="psw" required>
+                  <label for="email"><b>Email</b></label>
+                  <input type="text" placeholder="Nhập tên đăng nhập" name="email" required>
+                  <label for="password"><b>Mật khẩu</b></label>
+                  <input type="password" placeholder="Nhập mật khẩu" name="password" required>
                   <button type="submit" name="submitLoging">Đăng nhập</button>
                   <span class="psw">Quên <a href="#">mật khẩu</a></span>
               </div>
@@ -36,7 +37,11 @@
 
     </div>
 
-    
+    <?php
+    if(!empty(session_get('dangNhapThatBai'))){
+        echo session_get('dangNhapThatBai'); session_delete('dangNhapThatBai');
+    }
+     ?>
 <footer class="container">
     <div class="row-footer">
         <div class="pull-left">

@@ -1,5 +1,8 @@
 <?php
-    session_start();
+  	require '../database/database.php';
+      db_connect();
+      require '../database/session.php';
+      session_start()
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +44,17 @@
               </div>
 </form>
     </div>
+    <?php 
+    if(!empty($_SESSION['dangKiThanhCong'])){
+        echo session_get('dangKiThanhCong'); 
+        session_delete('dangKiThanhCong');
+    }
+    else{
+        echo session_get('dangKiThatBai'); 
+        session_delete('dangKiThatBai');
+    }
+  
+      ?>
 
     
 <footer class="container">

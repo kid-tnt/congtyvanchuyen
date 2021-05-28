@@ -1,9 +1,15 @@
+<?php require '../../database/database.php'; db_connect();  
+require '../../database/session.php'; session_start();			
+?>
 <?php
-    session_start();
-    if(!isset($_SESSION['loggedin'])){
+
+    //session_start();
+   /* if(!isset($_SESSION['loggedin'])){
         header("location:../../public_site/login.php");
     }
+    */
 ?>
+
 
 
 
@@ -23,6 +29,12 @@
       <h1>Công ty vận chuyển</h1>
       <p>Uy tín tạo niềm tin</p> 
     </div>
+    <?php 
+   
+    if(!empty(session_get('dangNhapThanhCong'))){
+        echo session_get('dangNhapThanhCong');
+    }
+    ?>
     <h1> Chào mừng đến với trang quản trị </h1>
     <a href="../action/ac_logout.php"> Đăng xuất 
     </a>
