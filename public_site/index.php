@@ -1,4 +1,9 @@
-
+<?php 	
+	require '../database/database.php';
+	db_connect();
+	require '../database/session.php';
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -332,72 +337,30 @@
               <p><span class="glyphicon glyphicon-envelope"></span> congtyvanchuyen@email.com</p>
             </div>
             <div class="col-sm-7">
-              <div class="row">
-                <div class="col-sm-6 form-group">
-                  <input class="form-control" id="name" name="name" placeholder="Tên" type="text" required>
-                </div>
-                <div class="col-sm-6 form-group">
-                  <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-                </div>
-              </div>
-              <textarea class="form-control" id="comments" name="comments" placeholder="bình luận" rows="5"></textarea><br>
-              <div class="row">
-                <div class="col-sm-12 form-group">
-                  <button class="btn btn-default pull-left" type="submit">Gửi</button>
-                </div>
-              </div>
+            <form action="addcontact.php" style="display: inline;" method="POST" >
+                  <div class="row">
+                    <div class="col-sm-6 form-group">
+                      <input class="form-control" id="name" name="cname" placeholder="Tên" type="text" required>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                      <input class="form-control" id="email" name="cemail" placeholder="Email" type="email" required>
+                    </div>
+                  </div>
+                  <textarea class="form-control" id="comments" name="ccomments" placeholder="bình luận" rows="5"></textarea><br>
+                  <div class="row">
+                    <div class="col-sm-12 form-group">
+                      <button class="btn btn-default pull-left" type="submit" name="contact">Gửi</button>
+                    </div>
+                  </div>
+            </form>
+            <?php
+    if(!empty(session_get('contact'))){
+        echo session_get('contact'); session_delete('contact');
+    }
+     ?>
             </div>
           </div>
         </div>
-        <!--form pop up-->
-        <!-- Modal login -->
-        <div id="id01" class="modal">
-          <span onclick="document.getElementById('id01').style.display='none'"
-        class="close" title="Close Modal">&times;</span>
-          <form class="modal-content animate" action="/action_page.php">
-              <div class="container-login">
-                  <label for="uname"><b>Tên đăng nhập</b></label>
-                  <input type="text" placeholder="Nhập tên đăng nhập" name="uname" required>
-                  <label for="psw"><b>Mật khẩu</b></label>
-                  <input type="password" placeholder="Nhập mật khẩu" name="psw" required>
-                  <button type="submit">Đăng nhập</button>
-                  <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                  <span class="psw">Quên <a href="#">mật khẩu</a></span>
-              </div>
-          </form>
-        </div>
-        <!--Modal sign up-->
-        <div id="id02" class="modal">
-            <span onclick="document.getElementById('id02').style.display='none'"
-          class="close" title="Close Modal">&times;</span>
-
-            <form class="modal-content animate" action="/action_page.php">
-              <div class="container-signup">
-                <h1>Đăng kí</h1>
-                <p>Điền vào mẫu sau để tạo tài khoản</p>
-                <hr>
-                <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Nhập Email" name="email" required>
-          
-                <label for="psw"><b> Nhập mật khẩu</b></label>
-                <input type="password" placeholder="Nhập mật khẩu" name="psw" required>
-          
-                <label for="psw-repeat"><b>Nhập lại mật khẩu</b></label>
-                <input type="password" placeholder="Nhập lại mật khẩu" name="psw-repeat" required>
-          
-                <label>
-                  <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Ghi nhớ tôi
-                </label>
-          
-                <p>Bằng việc tạo tài khoản bạn đã đồng ý với <a href="#" style="color:dodgerblue">Điều khoản và chính sách</a>.</p>
-          
-                <div class="clearfix">
-                  <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Hủy</button>
-                  <button type="submit" class="signup">Đăng kí</button>
-                </div>
-              </div>
-            </form>
-          </div>
           <!-- back to top -->
           <div id="to-top">
             <a id="myBtn" href="#myPage" title="Về đầu trang" >
@@ -453,25 +416,7 @@
     x.className = "navbar";
   }
 }
-/* modal*/
-// Get the modal
-function getModal1(){
-  document.getElementById('id01').style.display='block';
-}
-function getModal2(){
- document.getElementById('id02').style.display='block';
-}
-var modal1 = document.getElementById('id01');
-var modal2 = document.getElementById('id02');
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal1){
-    modal1.style.display = "none";
-  }
-  if(event.target == modal2){
-    modal2.style.display = "none";  
-  }
-}
+
 // animation
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link

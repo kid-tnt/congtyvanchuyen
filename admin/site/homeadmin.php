@@ -21,7 +21,6 @@ require '../../database/session.php'; session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="stylectvc_1.css">
     <title>Trang quan tri</title>
 </head>
 <body>
@@ -29,6 +28,8 @@ require '../../database/session.php'; session_start();
       <h1>Công ty vận chuyển</h1>
       <p>Uy tín tạo niềm tin</p> 
     </div>
+<div class="container">
+
     <?php 
    
     if(!empty(session_get('dangNhapThanhCong'))){
@@ -36,10 +37,13 @@ require '../../database/session.php'; session_start();
     }
     ?>
     <h1> Chào mừng đến với trang quản trị </h1>
-    <a href="../action/ac_logout.php"> Đăng xuất 
-    </a>
-  
-    
+    <ul class="feature">
+    <li> <a href="addUser.php">Thêm tài khoản</a></li> 
+    <li> <a href="editUser.php">Sủa thông tin tài khoản</a></li> 
+    <li> <a href="deleteUser.php">Xóa tài khoản </a></li> 
+    </ul>
+</div>
+
 <footer class="container">
     <div class="row-footer">
         <div class="pull-left">
