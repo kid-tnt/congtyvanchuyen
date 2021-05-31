@@ -8,8 +8,8 @@
 
 	if (isset($_POST['submitSigning'])) {
 		$email = $_POST['email'];
-        $password= md5($_POST['password']);
-		$passwordAgain = md5($_POST['re_password']);
+        $password= ($_POST['password']);
+		$passwordAgain =($_POST['re_password']);
         $fullname=$_POST['fullname'];
         $address=$_POST['address'];
         $phone=$_POST['phone'];

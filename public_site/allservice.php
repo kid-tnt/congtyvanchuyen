@@ -8,6 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="stylectvc_1.css">
     <title>Tất cả dịch vụ</title>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
 </head>
 <body>
 <div class="jumbotron text-center" id="header" >
@@ -20,6 +37,39 @@
     <a  href="index.php" style="color: #118fe2;font-size: 20px;"><i class="fa fa-fw fa-home"></i> Trang chủ</a>
     <h1>Tất cả dịch vụ sẽ được hiển thị ở đây</h1>
    
+    <table>
+    <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>description</th>
+    </tr>
+    <?php
+    require "../database/database.php" ;
+    db_connect();
+    $sql_service="SELECT * FROM `service`";
+   
+    $data_service=db_get_list($sql_service);
+    for ($i=0; $i < count($data_service); $i++) { 
+        echo '
+   
+        <tr>
+                <td >'.$data_service[$i]['ID'].'</td>
+                <td>'.$data_service[$i]['name'].'</td>
+                <td>'.$data_service[$i]['description'].'</td>
+           
+                <br>
+             
+            </tr>
+      
+            ';
+        
+    } 
+       
+?> 
+    </table>
+   
+
+
 
     </div>
 
