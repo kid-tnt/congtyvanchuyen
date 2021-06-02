@@ -14,7 +14,7 @@
         $address=$_POST['address'];
         $phone=$_POST['phone'];
 
-		$sql_dangKi = "INSERT INTO `user` VALUES (NULL,'$email','$password','$fullname','$address','$phone',1)";
+		$sql_dangKi = "INSERT INTO `user` VALUES (NULL,'$email','$password','$fullname','$phone','$address',1)";
 		
 		//kiem tra email da ton tai
 		$sql_getEmail = "SELECT `email` FROM `user` WHERE `email`='$email'";

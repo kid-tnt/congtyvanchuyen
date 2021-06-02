@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +8,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../public_site/stylectvc_1.css">
-    <title>Liên hệ</title>
+    <title>Tài khoản</title>
     <style>
+    a {
+        color: #2195dceb;
+    }
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -34,36 +38,48 @@ tr:nth-child(even) {
     
    
     <div class="container">
-    <a  href="homeadmin.php" style="display: block;color: blue;">back</a>
-    <h1>Tất cả dịch vụ sẽ được hiển thị ở đây</h1>
+    <a  href="homeadmin.php" style="display: block;color: #2195dceb;">back</a>
+    <h1>Tất cả tài khoản </h1>
    
     <table>
     <tr>
         <th>ID</th>
-        <th>name</th>
         <th>email</th>
-        <th>comment</th>
+        <th>Tên đầy đủ</th>
+        <th>Số điện thoại</th>
+        <th>Địa chỉ</th>
+        <th>role</th>
+        <th> </th>
     </tr>
     <?php
     require "../../database/database.php" ;
     db_connect();
-    $sql_contact="SELECT * FROM `contact`";
+    require '../../database/session.php'; session_start();
+    $sql_user="SELECT * FROM `user`";
    
-    $data_contact=db_get_list($sql_contact);
-    for ($i=0; $i < count($data_contact); $i++) { 
+    $data_user=db_get_list($sql_user);
+    for ($i=0; $i < count($data_user); $i++) { 
+        
+    
         echo '
-   
         <tr>
-                <td >'.$data_contact[$i]['ID'].'</td>
-                <td>'.$data_contact[$i]['name'].'</td>
-                <td>'.$data_contact[$i]['email'].'</td>
-                <td>'.$data_contact[$i]['comment'].'</td>
+    
+        
+                <td >'.$data_user[$i]['ID'].'</td>
+                <td>'.$data_user[$i]['email'].'</td>
+                <td>'.$data_user[$i]['fullname'].'</td>
+                <td>'.$data_user[$i]['phone'].'</td>
+                <td>'.$data_user[$i]['address'].'</td>
+                <td>'.$data_user[$i]['role'].'</td>
+                <td><a href="detailUser.php?id='.$data_user[$i]['ID'].'">chi tiết</a></td>
+                
+	
            
                 <br>
-             
-            </tr>
+           
+            </tr>';
       
-            ';
+            
         
     } 
        
@@ -74,6 +90,25 @@ tr:nth-child(even) {
 
 
     </div>
+    <?php 
+    if(!empty($_SESSION['editthanhcong'])){
+        echo session_get('editthanhcong'); 
+        session_delete('editthanhcong');
+    }
+    else{
+        echo session_get('editthatbai'); 
+        session_delete('editthatbai');
+    }
+    if(!empty($_SESSION['deletethanhcong'])){
+        echo session_get('deletethanhcong'); 
+        session_delete('deletethanhcong');
+    }
+    else{
+        echo session_get('deletethatbai'); 
+        session_delete('deletethatbai');
+    }
+  
+      ?>
 
     
 <footer class="container">
