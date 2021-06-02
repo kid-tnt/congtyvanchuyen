@@ -16,13 +16,13 @@ if (empty($data_user)) {
     header('location: ../../public_site/login.php');
     
 }
-if($data_user['role']==true){
+else if($data_user['role']==true){
     session_set('dangNhapThanhCong', '
             
     <a href="../site/homeadmin.php">
         <span class ="glyphicon glyphicon-user"> '.$data_user['fullname'].'</span>
     </a>
-    <a href="../../admin/action/ac_logout.php">Đăng xuất</a>'
+    <a href="../action/ac_logout.php">Đăng xuất</a>'
 );
 
 
@@ -36,6 +36,7 @@ else {
             
                 <a href="../site/homeadmin.php">
                     <span class ="glyphicon glyphicon-user"> '.$data_user['fullname'].'</span>
+                   
                 </a>
                 <a href="../action/ac_logout.php">Đăng xuất</a>'
             );
@@ -65,3 +66,4 @@ if(isset( $_POST['submitLoging']))
 
 
 ?>
+

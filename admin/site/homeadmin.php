@@ -1,14 +1,11 @@
 <?php require '../../database/database.php'; db_connect();  
 require '../../database/session.php'; session_start();			
 ?>
-<?php
-
-    //session_start();
-   /* if(!isset($_SESSION['loggedin'])){
-        header("location:../../public_site/login.php");
-    }
-    */
-?>
+<style>
+li a {
+    color: blue;
+}
+</style>
 
 
 
@@ -21,26 +18,33 @@ require '../../database/session.php'; session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../public_site/stylectvc_1.css">
     <title>Trang quan tri</title>
 </head>
 <body>
 <div class="jumbotron text-center" id="header" >
       <h1>Công ty vận chuyển</h1>
       <p>Uy tín tạo niềm tin</p> 
+      
     </div>
+    <div style="background-color: #1a92bc;"> 
+<?php 
+   
+   if(!empty(session_get('dangNhapThanhCong'))){
+       echo session_get('dangNhapThanhCong');
+   }
+   ?>
+</div>
 <div class="container">
 
-    <?php 
    
-    if(!empty(session_get('dangNhapThanhCong'))){
-        echo session_get('dangNhapThanhCong');
-    }
-    ?>
     <h1> Chào mừng đến với trang quản trị </h1>
+ 
     <ul class="feature">
     <li> <a href="addUser.php">Thêm tài khoản</a></li> 
-    <li> <a href="editUser.php">Sủa thông tin tài khoản</a></li> 
+    <li> <a href="editUser.php">Sửa thông tin tài khoản</a></li> 
     <li> <a href="deleteUser.php">Xóa tài khoản </a></li> 
+    <li> <a href="showContact.php">Xem liên hệ </a></li> 
     </ul>
 </div>
 
