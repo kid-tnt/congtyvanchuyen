@@ -23,7 +23,7 @@ if(empty($_SESSION['id_user'])) {
     </div>
 
 <div class="container">
-<a href="homeadmin.php" style="color: blue;">back</a>
+<a href="homeadmin.php" style="color:  #1a92bc;">back</a>
 <form action="../action/ac_addService.php" method="POST" style="display: flex; justify-content: space-around;">
               <div class="container-login">
                   <label for="name"><b>Tên dịch vụ</b></label>

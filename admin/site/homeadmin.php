@@ -4,13 +4,6 @@ if(empty($_SESSION['id_user'])) {
     header ('Location: ../../index.php');
 }		
 ?>
-<style>
-li a {
-    color: blue;
-}
-</style>
-
-
 
 
 <!DOCTYPE html>
@@ -23,6 +16,11 @@ li a {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../public_site/stylectvc_1.css">
     <title>Trang quan tri</title>
+    <style>
+li a {
+    color:  #1a92bc;
+}
+</style>
 </head>
 <body>
 <div class="jumbotron text-center" id="header" >

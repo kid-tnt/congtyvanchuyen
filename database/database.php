@@ -23,13 +23,14 @@
 	    global $conn;
 	    $data  = array();
 	    $result = mysqli_query($conn, $sql);
-	    while (@$row = mysqli_fetch_assoc($result)){
+	    while ($row = mysqli_fetch_assoc($result)){
 	        $data[] = $row;
 	    }
 	    return $data;
+		
 	}
 
-	// Hàm lấy chi tiết, dùng select theo ID vì nó trả về 1 record
+	// Hàm lấy chi tiết trả về 1 record
 	function db_get_row($sql){
 	    db_connect();
 	    global $conn;
