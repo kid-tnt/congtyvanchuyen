@@ -19,16 +19,16 @@ if (empty($data_user)) {
 else if($data_user['role']==true){
     session_set('dangNhapThanhCong', '
             
-    <a href="../site/homeadmin.php">
+    <a href="../site/detailUser.php">
         <span class ="glyphicon glyphicon-user"> '.$data_user['fullname'].'</span>
     </a>
-    <a href="../action/ac_logout.php">Đăng xuất</a>'
+    <a href="../../admin/action/ac_logout.php">Đăng xuất</a>'
 );
-
-
-session_set('id_user', $data_user['id']);
+//$_SESSION['id_test']=$data_user['ID'];
+ session_set('id_user', $data_user['ID']);
 
     header('location: ../../user/site/homeUser.php');
+    //vào trang người dùng
 }
 else {
     //dang nhap thanh cong
@@ -42,7 +42,8 @@ else {
             );
 
     
-    session_set('id_user', $data_user['id']);
+    session_set('id_user', $data_user['ID']);
+    //vào trang quản trị
 
     header('location: ../site/homeadmin.php');
 }

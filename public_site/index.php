@@ -3,6 +3,7 @@
 	db_connect();
 	require '../database/session.php';
 	session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,13 +45,13 @@
                               <h2>Giải pháp an toàn tin cậy</h2>
                             </div>
                             <div class="search">
-                              <form action="#">
-                                <div class="input-form">
-                                    <input type="text" class="form-control" size="100" placeholder="Nhập mã vận đơn ">
-                                </div>
-                                <div class="search-form">
-                                  <button type="button" class="btn btn-danger">Tìm kiếm</button>
-                                </div>
+                              <form action="result_search.php" method="POST">
+                                <!--<div class="input-form">-->
+                                    <input type="text" class="form-control" size="100" placeholder="Nhập mã vận đơn " name="ID">
+                               <!-- </div> -->
+                               <!-- <div class="search-form">-->
+                                  <button type="submit" class="btn btn-danger" name="search">Tìm kiếm</button>
+                               <!-- </div> -->
                               </form>
                             </div>
                           <div class="add-in4">

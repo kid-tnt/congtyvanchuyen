@@ -1,8 +1,8 @@
 <?php require '../../database/database.php'; db_connect();  
-require '../../database/session.php'; session_start();		
+require '../../database/session.php'; session_start();	
 if(empty($_SESSION['id_user'])) {
     header ('Location: ../../index.php');
-}	
+}		
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,21 +19,19 @@ if(empty($_SESSION['id_user'])) {
       <h1>Công ty vận chuyển</h1>
       <p>Uy tín tạo niềm tin</p> 
 </div>
-<a  href="showUser.php" style="display: block;color: #2195dceb;">back</a>
+<a  href="homeUser.php" style="display: block;color: #2195dceb;">back</a>
 
 <?php
 
-if(isset($_GET['id'])){
-    $id=$_GET['id'];
+
+    $id=$_SESSION['id_user'];
     
     $sql_selectEmail = "SELECT * FROM `user` WHERE `ID` = '$id'";
 	$data_selectEmail = db_get_row($sql_selectEmail);
-}
+
 ?>
 <form action="../action/ac_editUser.php" method="POST" style="display: flex; justify-content: space-around;">
               <div class="container-login">
-              <label for="userID"><b>ID</b></label>
-                  <input type="text" placeholder="ID" name="userID" value="<?php echo $data_selectEmail['ID'] ?>" readonly >
                   <label for="email"><b>Email</b></label>
                   <input type="text" placeholder="email" name="email" value="<?php echo $data_selectEmail['email'] ?>" >
                   <label for="password"><b>Mật khẩu</b></label>
@@ -46,13 +44,24 @@ if(isset($_GET['id'])){
                   <input type="text" placeholder="số điện thoại" name="phone" value="<?php echo $data_selectEmail['phone'] ?>">
                   <label for="address"><b>Địa chỉ</b></label>
                   <input type="text" placeholder=" địa chỉ" name="address" value="<?php echo $data_selectEmail['address'] ?>">
-                  <label for="phone"><b>Quyền</b></label>
-                  <input type="text" placeholder="Quyền" name="role" value="<?php echo $data_selectEmail['role'] ?>">
+                  
 
                   <button type="submit" name="submitUpdate">Cập nhật</button>
-                  <button type="submit" name="submitDelete">Xóa</button>
               </div>
 </form>
+<?php 
+    if(!empty($_SESSION['editthanhcong'])){
+        echo session_get('editthanhcong'); 
+        session_delete('editthanhcong');
+    }
+    else{
+        echo session_get('editthatbai'); 
+        session_delete('editthatbai');
+    }
+    
+   ?>
+
+
 
 
 <footer class="container">

@@ -15,7 +15,7 @@ if(empty($_SESSION['id_user'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../public_site/stylectvc_1.css">
-    <title>Liên hệ</title>
+    <title>Đơn hàng</title>
     <style>
 table {
   font-family: arial, sans-serif;
@@ -32,6 +32,9 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+a {
+    color: blue;
+}
 </style>
 </head>
 <body>
@@ -43,28 +46,27 @@ tr:nth-child(even) {
    
     <div class="container">
     <a  href="homeadmin.php" style="display: block;color: blue;">back</a>
-   
+    <h1>Tất cả đơn hàng sẽ được hiển thị ở đây</h1>
    
     <table>
     <tr>
-        <th>ID</th>
-        <th>name</th>
-        <th>email</th>
-        <th>comment</th>
+        <th>ID dịch vụ</th>
+        <th>Tên dịch vụ</th>
+        <th>Mô tả</th>
+         <th></th>
     </tr>
     <?php
-   
-    $sql_contact="SELECT * FROM `contact`";
-   
-    $data_contact=db_get_list($sql_contact);
-    for ($i=0; $i < count($data_contact); $i++) { 
+ 
+    $sql_service="SELECT * FROM `service`";
+    $data_service=db_get_list($sql_service);
+    for ($i=0; $i < count($data_service); $i++) { 
         echo '
    
         <tr>
-                <td >'.$data_contact[$i]['ID'].'</td>
-                <td>'.$data_contact[$i]['name'].'</td>
-                <td>'.$data_contact[$i]['email'].'</td>
-                <td>'.$data_contact[$i]['comment'].'</td>
+                <td >'.$data_service[$i]['ID'].'</td>
+                <td>'.$data_service[$i]['name'].'</td>
+                <td>'.$data_service[$i]['description'].'</td>
+                <td><a href="detailService.php?id='.$data_service[$i]['ID'].'">chi tiết</a></td>
            
                 <br>
              
@@ -75,6 +77,7 @@ tr:nth-child(even) {
     } 
        
 ?> 
+
     </table>
    
 
@@ -82,7 +85,25 @@ tr:nth-child(even) {
 
     </div>
 
-    
+    <?php 
+    if(!empty($_SESSION['updateServicethanhcong'])){
+        echo session_get('updateServicethanhcong'); 
+        session_delete('updateServicethanhcong');
+    }
+    else{
+        echo session_get('updateServicethatbai'); 
+        session_delete('updateServicethatbai');
+    }
+    if(!empty($_SESSION['deleteServicethanhcong'])){
+        echo session_get('deleteServicethanhcong'); 
+        session_delete('deleteServicethanhcong');
+    }
+    else{
+        echo session_get('deleteServicethatbai'); 
+        session_delete('deleteServicethatbai');
+    }
+  
+ ?>
 <footer class="container">
     <div class="row-footer">
         <div class="pull-left">

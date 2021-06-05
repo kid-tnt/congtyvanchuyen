@@ -19,35 +19,25 @@ if(empty($_SESSION['id_user'])) {
       <h1>Công ty vận chuyển</h1>
       <p>Uy tín tạo niềm tin</p> 
 </div>
-<a  href="showUser.php" style="display: block;color: #2195dceb;">back</a>
+<a  href="editService.php" style="display: block;color: #2195dceb;">back</a>
 
 <?php
 
 if(isset($_GET['id'])){
     $id=$_GET['id'];
     
-    $sql_selectEmail = "SELECT * FROM `user` WHERE `ID` = '$id'";
-	$data_selectEmail = db_get_row($sql_selectEmail);
+    $sql_selectService = "SELECT * FROM `service` WHERE `ID` = '$id'";
+	$data_selectService = db_get_row($sql_selectService);
 }
 ?>
-<form action="../action/ac_editUser.php" method="POST" style="display: flex; justify-content: space-around;">
+<form action="../action/ac_editService.php" method="POST" style="display: flex; justify-content: space-around;">
               <div class="container-login">
-              <label for="userID"><b>ID</b></label>
-                  <input type="text" placeholder="ID" name="userID" value="<?php echo $data_selectEmail['ID'] ?>" readonly >
-                  <label for="email"><b>Email</b></label>
-                  <input type="text" placeholder="email" name="email" value="<?php echo $data_selectEmail['email'] ?>" >
-                  <label for="password"><b>Mật khẩu</b></label>
-                  <input type="password" placeholder="mật khẩu" name="password" value="<?php echo $data_selectEmail['password'] ?>" >
-                  <label for="password"><b> Xác nhận Mật khẩu</b></label>
-                  <input type="password" placeholder="xác nhận mật khẩu" name="re_password" value="<?php echo $data_selectEmail['password'] ?>" >
-                  <label for="fullname"><b>Tên đầy đủ</b></label>
-                  <input type="text" placeholder="tên đầy đủ" name="fullname" value="<?php echo $data_selectEmail['fullname'] ?>" >
-                  <label for="phone"><b>Số điện thoại</b></label>
-                  <input type="text" placeholder="số điện thoại" name="phone" value="<?php echo $data_selectEmail['phone'] ?>">
-                  <label for="address"><b>Địa chỉ</b></label>
-                  <input type="text" placeholder=" địa chỉ" name="address" value="<?php echo $data_selectEmail['address'] ?>">
-                  <label for="phone"><b>Quyền</b></label>
-                  <input type="text" placeholder="Quyền" name="role" value="<?php echo $data_selectEmail['role'] ?>">
+              <label for="ServiceID"><b>ID</b></label>
+                  <input type="text" placeholder="ID" name="ServiceID" value="<?php echo $data_selectService['ID'] ?>" readonly >
+                  <label for="name"><b>Name</b></label>
+                  <input type="text" placeholder="tên" name="name" value="<?php echo $data_selectService['name'] ?>" >
+                  <label for="description"><b>Mô tả</b></label>
+                  <input type="text" placeholder="Mô tả" name="description" value="<?php echo $data_selectService['description'] ?>" >
 
                   <button type="submit" name="submitUpdate">Cập nhật</button>
                   <button type="submit" name="submitDelete">Xóa</button>

@@ -3,8 +3,7 @@ require '../../database/session.php'; session_start();
 ?>
 <?php
 if (isset($_POST['submitUpdate'])) {
-
-$email = $_POST['email'];
+$id=$_POST['userID'];
 $password = $_POST['password'];
 $passwordAgain =($_POST['re_password']);
 $fullname=$_POST['fullname'];
@@ -12,10 +11,11 @@ $phone=$_POST['phone'];
 $address=$_POST['address'];
 $role=$_POST['role'];
 
-$sql_update = "UPDATE `user` SET `fullname`='$fullname',`password`='$password',`phone`='$phone',`address`='$address',`role`='$role' WHERE `email`='$email'";
-
-		if (empty($data_email) && $password == $passwordAgain &&!empty($role) ) {
-			//thuc thi dang ki
+$sql_update = "UPDATE `user` SET `fullname`='$fullname',`password`='$password',`phone`='$phone',`address`='$address',`role`='$role' WHERE `ID`='$id'";
+$sql_getEmail = "SELECT `email` FROM `user` WHERE `email`='$email'";
+$data_email = db_get_row($sql_getEmail);
+		if ($password == $passwordAgain &&!empty($role) ) {
+			
 			db_execute($sql_update);
 
 			session_set('editthanhcong', '<div class="alert alert-success">Cập nhật thành công </div>');
@@ -30,22 +30,19 @@ $sql_update = "UPDATE `user` SET `fullname`='$fullname',`password`='$password',`
 }
 if (isset($_POST['submitDelete'])) {
 
-    $email = $_POST['email'];
-    $role=$_POST['role'];
+    $id=$_POST['userID'];
+   
     
-    $sql_delete = "DELETE FROM `user`  WHERE `email`='$email'";
+    $sql_deleteuser = "DELETE FROM `user`  WHERE `ID`='$id'";
     
-            if ($role=='1' ) {
-                db_execute($sql_delete);
+           
+                db_execute($sql_deleteuser);
     
-                session_set('deletethanhcong', '<div class="alert alert-success"Xóa thành công </div>');
-                session_delete('deletethatbai');
+                session_set('deleteuserthanhcong', '<div class="alert alert-success">Xóa thành công </div>');
+                session_delete('deleteuserthatbai');
                 header('Location: ../site/showUser.php');
-            }else{
-                session_set('deletethatbai', '<div class="alert alert-danger"> Lỗi. Vui lòng kiểm tra lại thông tin! </div>');
-                session_delete('deletethatbai');
-                header('Location: ../site/showUser.php');
-            }
+           
+               
     
     }
 
