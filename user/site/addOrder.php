@@ -1,6 +1,6 @@
-<?php 
+<?php
 require '../../database/database.php'; db_connect();  
-require '../../database/session.php'; session_start();		
+require '../../database/session.php'; session_start();	
 if(empty($_SESSION['id_user'])) {
     header ('Location: ../../index.php');
 }
@@ -15,51 +15,57 @@ if(empty($_SESSION['id_user'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <link rel="stylesheet" href="../../public_site/stylectvc_1.css">
-    <title>Trang người dùng</title>
-    <style> 
-    li a {
-        color: #1a92bc;
-    }
-    </style>
-</head>
+   </head>
 <body>
 <div class="jumbotron text-center" id="header" >
       <h1>Công ty vận chuyển</h1>
       <p>Uy tín tạo niềm tin</p> 
     </div>
-    <div style="background-color: #1a92bc;"> 
-    <?php 
-   
-    if(!empty(session_get('dangNhapThanhCong'))){
-        echo session_get('dangNhapThanhCong');
-       
-    }
-    ?>
-    </div>
-    <div class="container">
-    <h1> Chào mừng đến với trang người dùng </h1>
-    <ul class="feature">
-    <li> <a href="addOrder.php">Thêm đơn</a></li> 
-    <li> <a href="editOrder.php">Sửa đơn</a></li> 
-    <li> <a href="showOrder.php">Xem tất cả các đơn </a></li> 
-    <li> <a href="cancelOrder.php">Hủy đơn </a></li> 
-    <li> <a href="detailUser.php">Sủa thông tin cá nhận </a></li> 
 
-    </ul>
-    </div>
-    
-  <?php
-    if(!empty($_SESSION['editthanhcong'])){
-        echo session_get('editthanhcong'); 
-        session_delete('editthanhcong');
-    }
-    else{
-        echo session_get('editthatbai'); 
-        session_delete('editthatbai');
-    }
-  ?>
-   
-    
+<div class="container">
+<a href="homeUser.php" style="color: blue;">back</a>
+
+            <?php
+            $sql_service="SELECT * FROM `service` ";
+            $data_service=db_get_list($sql_service);
+
+            ?>
+            <form action="../action/ac_addOrder.php" method="POST">
+            <div class="container-login"> 
+            <label for="address_sender">Nhập địa chỉ gửi</label>
+            <input type="text" placeholder="Nhập địa chỉ gửi" name="address_sender">
+            <label for="address_receiver">Nhập địa chỉ nhận</label>
+            <input type="text" placeholder="Nhập địa chỉ nhận" name="address_receiver">
+            <label for="weight">Nhập cân nặng</label>
+            <input type="text" placeholder="Nhập cân nặng" name="weight">
+            <label for="select">Chọn dịch vụ: </label><br>
+            <select name="IDservice" style="width: 300px; height:30px">
+            <?php 
+            for ($i=0; $i < count($data_service); $i++) 
+            echo' <option value="'.$data_service[$i]['ID'].' ">'. $data_service[$i]['name'].'</option>'
+            ?>
+            </select>
+            <button type="submit" name="create">Tạo đơn</button>
+            </div>
+
+            </form>
+
+
+            <?php
+
+
+            if(!empty($_SESSION['addOrderthanhcong'])){
+                echo session_get('addOrderthanhcong'); 
+                session_delete('addOrderthanhcong');
+            }
+            else{
+                echo session_get('addOrderthatbai'); 
+                session_delete('addOrderthatbai');
+            }
+
+
+            ?>
+</div>
 <footer class="container">
     <div class="row-footer">
         <div class="pull-left">
@@ -95,3 +101,4 @@ if(empty($_SESSION['id_user'])) {
 </footer>
 </body>
 </html>
+

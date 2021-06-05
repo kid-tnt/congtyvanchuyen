@@ -14,7 +14,7 @@ if(empty($_SESSION['id_user'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../public_site/stylectvc_1.css">
-    <title>Trang quan tri thêm người dùng</title>
+    <title>Trang quan tri thêm dịch vụ</title>
 </head>
 <body>
 <div class="jumbotron text-center" id="header" >
@@ -24,37 +24,27 @@ if(empty($_SESSION['id_user'])) {
 
 <div class="container">
 <a href="homeadmin.php" style="color: blue;">back</a>
-<form action="../action/ac_addUser.php" method="POST" style="display: flex; justify-content: space-around;">
+<form action="../action/ac_addService.php" method="POST" style="display: flex; justify-content: space-around;">
               <div class="container-login">
-                  <label for="email"><b>Email</b></label>
-                  <input type="text" placeholder="Nhập email" name="email" required>
-                  <label for="password"><b>Mật khẩu</b></label>
-                  <input type="password" placeholder="Nhập mật khẩu" name="password" required>
-                  <label for="re_password"><b> Xác nhận Mật khẩu</b></label>
-                  <input type="password" placeholder="Nhập lại mật khẩu" name="re_password" required>
-                  <label for="fullname"><b>Tên đầy đủ</b></label>
-                  <input type="text" placeholder="Nhập tên đầy đủ" name="fullname" >
-                  <label for="phone"><b>Số điện thoại</b></label>
-                  <input type="text" placeholder="Nhập số điện thoại" name="phone">
-                  <label for="address"><b>Địa chỉ</b></label>
-                  <input type="text" placeholder="Nhập địa chỉ" name="address">
-                  <input type="radio" id="role" name="role" value="1">
-                 <label for="User"><b>User</b></label> 
-                  <input type="radio" id="role" name="role" value="0">
-                 <label for="admin"><b>Quản trị</b></label> 
-                  <button type="submit" name="addUser">Thêm</button>
+                  <label for="name"><b>Tên dịch vụ</b></label>
+                  <input type="text" placeholder="Nhập tên dịch vụ" name="name" required>
+                  <label for="description"><b>Mô tả dịch vụ</b></label>
+                  <input type="text" placeholder="Nhập mô tả" name="description" required>
+                  
+                  
+                  <button type="submit" name="addService">Thêm</button>
               </div>
 
 </form>
 </div>
 <?php 
-    if(!empty($_SESSION['addthanhcong'])){
-        echo session_get('addthanhcong'); 
-        session_delete('addthanhcong');
+    if(!empty($_SESSION['addServicethanhcong'])){
+        echo session_get('addServicethanhcong'); 
+        session_delete('addServicethanhcong');
     }
     else{
-        echo session_get('addthatbai'); 
-        session_delete('addthatbai');
+        echo session_get('addServicethatbai'); 
+        session_delete('addServicethatbai');
     }
   
       ?>

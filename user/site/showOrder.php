@@ -1,10 +1,12 @@
+
 <?php
-require "../../database/database.php" ;
-db_connect();
-require '../../database/session.php'; session_start();
+require '../../database/database.php'; db_connect();  
+require '../../database/session.php'; session_start();	
 if(empty($_SESSION['id_user'])) {
     header ('Location: ../../index.php');
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,11 +17,8 @@ if(empty($_SESSION['id_user'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../public_site/stylectvc_1.css">
-    <title>Tài khoản</title>
+    <title>Đơn hàng</title>
     <style>
-    a {
-        color: #2195dceb;
-    }
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -35,6 +34,9 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+a {
+    color: blue;
+}
 </style>
 </head>
 <body>
@@ -45,78 +47,84 @@ tr:nth-child(even) {
     
    
     <div class="container">
-    <a  href="homeadmin.php" style="display: block;color: #2195dceb;">back</a>
-    <h1>Tất cả tài khoản </h1>
+    <a  href="homeUser.php" style="display: block;color: blue;">back</a>
+    <h1>Tất cả đơn hàng sẽ được hiển thị ở đây</h1>
    
     <table>
     <tr>
-        <th>ID</th>
-        <th>email</th>
-        <th>Tên đầy đủ</th>
-        <th>Số điện thoại</th>
-        <th>Địa chỉ</th>
-        <th>role</th>
-        <th> </th>
+        <th>ID Đơn</th>
+        <th>ID Dịch vụ</th>
+        <th>Địa chỉ gửi</th>
+        <th>Địa chỉ nhận</th>
+        <th>Ngày tạo</th>
+        <th>Cân nặng</th>  
+         <th>Trạng thái</th>
+         <th></th>
     </tr>
     <?php
-    
-    $sql_user="SELECT * FROM `user`";
+   $keyID=$_SESSION['id_user'];
+    $sql_lading="SELECT * FROM `lading` WHERE `userID`='$keyID'";
    
-    $data_user=db_get_list($sql_user);
-    for ($i=0; $i < count($data_user); $i++) { 
-        
-    
-        echo '
-        <tr>
-    
-        
-                <td >'.$data_user[$i]['ID'].'</td>
-                <td>'.$data_user[$i]['email'].'</td>
-                <td>'.$data_user[$i]['fullname'].'</td>
-                <td>'.$data_user[$i]['phone'].'</td>
-                <td>'.$data_user[$i]['address'].'</td>
-                <td>'.$data_user[$i]['role'].'</td>
-                <td><a href="detailUser.php?id='.$data_user[$i]['ID'].'">chi tiết</a></td>
-                
-	
-           
-                <br>
-           
-            </tr>';
-      
-            
-        
-    } 
+    $data_lading=db_get_list($sql_lading);
+    if(empty($data_lading)){
+        echo 'Bạn chưa có đơn hàng nào';
+    }
+    else{
+        for ($i=0; $i < count($data_lading); $i++) { 
+            echo '
        
+            <tr>
+                    <td >'.$data_lading[$i]['ID'].'</td>
+                    <td>'.$data_lading[$i]['serviceID'].'</td>
+                    <td>'.$data_lading[$i]['address_sender'].'</td>
+                    <td>'.$data_lading[$i]['address_receiver'].'</td>
+                    <td>'.$data_lading[$i]['date_create'].'</td>
+                    <td>'.$data_lading[$i]['weight'].'</td>
+                    <td>'.$data_lading[$i]['status'].'</td>
+                    <td><a href="detailOrder.php?id='.$data_lading[$i]['ID'].'">chi tiết</a></td>
+               
+                    <br>
+                 
+                </tr>
+          
+                ';
+            
+        } 
+           
+    }
+    
 ?> 
+
     </table>
    
 
 
 
     </div>
+
     <?php 
-    if(!empty($_SESSION['editthanhcong'])){
-        echo session_get('editthanhcong'); 
-        session_delete('editthanhcong');
+    if(!empty($_SESSION['updateOrderthanhcong'])){
+        echo session_get('updateOrderthanhcong'); 
+        session_delete('updateOrderthanhcong');
     }
     else{
-        echo session_get('editthatbai'); 
-        session_delete('editthatbai');
+        echo session_get('updateOrderthatbai'); 
+        session_delete('updateOrderthatbai');
     }
-    if(!empty($_SESSION['deleteuserthanhcong'])){
-        echo session_get('deleteuserthanhcong'); 
-        session_delete('deleteuserthanhcong');
+    if(!empty($_SESSION['deleteOrderthanhcong'])){
+    
+        echo session_get('deleteOrderthanhcong'); 
+        session_delete('deleteOrderthanhcong');
+      
     }
     else{
-        echo session_get('deleteuserthatbai'); 
-        session_delete('deleteuserthatbai');
+    
+        echo session_get('deleteOrderthatbai'); 
+        session_delete('deleteOrderthatbai');
     }
   
-      ?>
-
-    
-<footer class="container">
+ ?>
+<footer class="container" style="margin-top: 200px;">
     <div class="row-footer">
         <div class="pull-left">
             <div class="coppyright">

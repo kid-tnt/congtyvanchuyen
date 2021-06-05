@@ -1,5 +1,8 @@
 <?php require '../../database/database.php'; db_connect();  
-require '../../database/session.php'; session_start();			
+require '../../database/session.php'; session_start();	
+if(empty($_SESSION['id_user'])) {
+    header ('Location: ../../index.php');
+}		
 ?>
 <style>
 li a {
@@ -33,6 +36,7 @@ li a {
    if(!empty(session_get('dangNhapThanhCong'))){
        echo session_get('dangNhapThanhCong');
    }
+
    ?>
 </div>
 <div class="container">
@@ -45,6 +49,9 @@ li a {
     <li> <a href="editUser.php">Sửa thông tin tài khoản</a></li> 
     <li> <a href="deleteUser.php">Xóa tài khoản </a></li> 
     <li> <a href="showContact.php">Xem liên hệ </a></li> 
+    <li> <a href="showOrder.php">Xem vận đơn </a></li> 
+    <li> <a href="addService.php">Thêm dịch vụ </a></li>
+    <li> <a href="editService.php">Sửa Dịch vụ </a></li>
     </ul>
 </div>
 
