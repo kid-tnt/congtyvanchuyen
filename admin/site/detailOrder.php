@@ -19,7 +19,7 @@ if(empty($_SESSION['id_user'])) {
       <h1>Công ty vận chuyển</h1>
       <p>Uy tín tạo niềm tin</p> 
 </div>
-<a  href="showUser.php" style="display: block;color: #2195dceb;">back</a>
+<a  href="showOrder.php" style="display: block;color: #2195dceb;">back</a>
 
 <?php
 

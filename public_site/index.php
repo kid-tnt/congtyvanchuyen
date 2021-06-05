@@ -47,7 +47,7 @@
                             <div class="search">
                               <form action="result_search.php" method="POST">
                                 <!--<div class="input-form">-->
-                                    <input type="text" class="form-control" size="100" placeholder="Nhập mã vận đơn " name="ID">
+                                    <input type="text" class="form-control" size="100" placeholder="Nhập mã vận đơn " name="ID" required>
                                <!-- </div> -->
                                <!-- <div class="search-form">-->
                                   <button type="submit" class="btn btn-danger" name="search">Tìm kiếm</button>

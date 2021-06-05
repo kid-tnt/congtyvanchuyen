@@ -3,8 +3,7 @@ require '../../database/session.php'; session_start();
 ?>
 <?php
 if (isset($_POST['subUpdate'])) {
-   // session_delete('deleteOrderthatbai');
-   // session_delete('deleteOrderthanhcong');
+   
 $ID_order=$_POST['ID'];
 $address_sender = $_POST['address_sender'];
 $address_receiver = $_POST['address_receiver'];
@@ -30,8 +29,7 @@ $sql_updateOrder = "UPDATE `lading` SET `address_sender`='$address_sender',`addr
 
 }
 if (isset($_POST['subDelete'])) {
-   // session_delete('updateOrderthatbai');
-   // session_delete('updateOrderthanhcong');
+
     $ID_order=$_POST['ID'];
     $status=$_POST['status'];
     

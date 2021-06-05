@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="stylectvc_1.css">
     <title>Kết quả tìm kiếm</title>
     </head>
+<style>
+h2{
+    color: black;
+}
+</style>
 <body>
 <div class="jumbotron text-center" id="header" >
       <h1>Công ty vận chuyển</h1>
@@ -31,11 +36,12 @@
 if(isset($_POST['search']))
 {
     $_IDorrder=$_POST['ID'];
+
     $sql_search="SELECT * FROM `lading` WHERE $_IDorrder=`ID`";
 $data_search=db_get_row($sql_search);
-if(!empty($data_search)){
-    echo ' trạng thái của đơn hàng với mã vận đơn ' .$data_search['ID'] .' là: '. $data_search['status'].' <br/>';
-     echo  'Đơn hàng được gửi từ '.$data_search['address_sender'].' đến '.$data_search['address_receiver'];
+if(!empty($data_search) ){
+    echo ' <h2>trạng thái của đơn hàng với mã vận đơn ' .$data_search['ID'] .' là: '. $data_search['status'].' <br/></h2>';
+     echo  '<h2>Đơn hàng được gửi từ '.$data_search['address_sender'].' đến '.$data_search['address_receiver'].'</h2';
        // echo $data_search['address_receiver'];
        // echo $data_search['weight'];
       //  echo;

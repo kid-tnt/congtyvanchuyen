@@ -33,7 +33,7 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 a {
-    color: blue;
+    color: #1a92bc;
 }
 </style>
 </head>
@@ -45,7 +45,7 @@ a {
     
    
     <div class="container">
-    <a  href="homeadmin.php" style="display: block;color: blue;">back</a>
+    <a  href="homeadmin.php" style="display: block;color:#1a92bc ;">back</a>
     <h1>Tất cả đơn hàng sẽ được hiển thị ở đây</h1>
    
     <table>

@@ -103,10 +103,10 @@
     display: flex;
     justify-content: space-between;
   }
-  .btn-danger{
+  .btn-info{
   background-color:#1a92bc;;
   }
-  .btn-danger:hover{
+  .btn-info:hover{
     background-color:#00ffcbd4;
   }
   .add-in4{
