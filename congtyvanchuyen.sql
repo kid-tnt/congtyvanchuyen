@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2021 at 11:51 AM
+-- Generation Time: Jun 08, 2021 at 03:36 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -116,7 +116,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `email`, `password`, `fullname`, `phone`, `address`, `role`) VALUES
-(1, 'admin@admin.com', 'b18dcat240', 'Ngo Van Thang', NULL, NULL, 0),
+(1, 'admin@admin.com', '123456', 'Administrator', NULL, NULL, 0),
 (4, '1@gmail.com', '123456', 'Đinh Công Mạnh', '123456789', 'Cần Thơ', 1),
 (8, '2@gmail.com', '123456', 'Hiếu Laptop', '0123456789', 'PTIT', 1),
 (15, '3@gmail.com', '123456', '', '', '', 1),
